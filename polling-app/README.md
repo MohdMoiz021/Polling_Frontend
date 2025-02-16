@@ -1,8 +1,9 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The API END POINTS are 
+## http://localhost:5000/api/polls for get Request
+## http://localhost:5000/api/poll for post Request
+## http://localhost:5000/api/poll_.id/vote for vote request
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## The backend is not live you can access backend by clonning this https://github.com/MohdMoiz021/Polling_Backend
