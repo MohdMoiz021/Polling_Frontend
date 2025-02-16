@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 function FormPoll({ setPolls }) {
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '']);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const newPoll = { question, options };
-    
+
     try {
       const response = await axios.post('http://localhost:5000/api/poll', newPoll);
       setPolls((prev) => [response.data, ...prev]);
@@ -19,6 +19,18 @@ function FormPoll({ setPolls }) {
     } catch (err) {
       console.error("Error creating poll:", err);
     }
+  };
+
+  const addOption = () => {
+    if (options.length < 4) {
+      setOptions([...options, '']);
+    }
+  };
+
+  const handleOptionChange = (index, value) => {
+    const newOptions = [...options];
+    newOptions[index] = value;
+    setOptions(newOptions);
   };
 
   return (
@@ -32,20 +44,29 @@ function FormPoll({ setPolls }) {
         required
       />
       {options.map((option, index) => (
-        <input
-          key={index}
-          type="text"
-          value={option}
-          onChange={(e) => {
-            const newOptions = [...options];
-            newOptions[index] = e.target.value;
-            setOptions(newOptions);
-          }}
-          placeholder={`Option ${index + 1}`}
-          className="input-field"
-          required
-        />
+        <div key={index} className="option-container">
+          <input
+            type="text"
+            value={option}
+            onChange={(e) => handleOptionChange(index, e.target.value)}
+            placeholder={`Option ${index + 1}`}
+            className="input-field"
+            required
+          />
+        </div>
       ))}
+      
+      {/* Add option button (only visible if the number of options is less than 4) */}
+      {options.length < 4 && (
+        <button
+          type="button"
+          onClick={addOption}
+          className="btn-add-option"
+        >
+          +
+        </button>
+      )}
+
       <button type="submit" className="btn-submit">Create Poll</button>
     </form>
   );

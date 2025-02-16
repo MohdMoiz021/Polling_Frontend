@@ -1,75 +1,196 @@
+/* Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Container */
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2.5em;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Form Containers */
+.poll-form, .poll-vote {
+  margin: 20px 0;
+}
+
+.poll-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 450px;
+  margin: auto;
+}
+
+.input-field {
+  padding: 12px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1em;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Buttons Styling */
+.btn-submit, .btn-vote, .btn-add-option {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover, .btn-vote:hover, .btn-add-option:hover {
+  background-color: #0056b3;
+}
+
+/* Poll List and Poll Item */
+.poll-list {
+  margin-top: 30px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.poll-item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.poll-item h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+.poll-item .option {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.poll-item .option input[type="radio"] {
+  margin-right: 12px;
+}
+
+.poll-item .option label {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Add Option Button Styling */
+.btn-add-option {
+  background-color: #28a745;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-option:hover {
+  background-color: #218838;
+}
+
+.poll-item button {
+  background-color: #ffc107;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.poll-item button:hover {
+  background-color: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .App {
-    max-width: 600px;
-    margin: 0 auto;
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
+  .input-field, .btn-submit, .btn-vote, .btn-add-option {
+    font-size: 1em;
+  }
+
+  .poll-form {
+    gap: 10px;
+  }
+
+  .poll-item {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 15px;
+  }
+
   h1 {
     font-size: 2em;
-    color: #333;
   }
-  
-  .poll-form, .poll-vote {
-    margin: 20px 0;
-  }
-  
-  .input-field {
+
+  .input-field, .btn-submit, .btn-vote, .btn-add-option {
     padding: 10px;
-    margin: 10px 0;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
   }
-  
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-  
-  .btn-submit, .btn-vote {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  
-  .btn-submit:hover, .btn-vote:hover {
-    background-color: #0056b3;
-  }
-  
-  .poll-list {
-    margin-top: 20px;
-  }
-  
-  .poll-item {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .option {
-    margin: 10px 0;
-  }
-  
+}
